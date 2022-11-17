@@ -52,6 +52,7 @@ declare module '$env/static/private' {
 	export const npm_config_registry: string;
 	export const PNPM_HOME: string;
 	export const LC_ALL: string;
+	export const npm_package_devDependencies__types_quill: string;
 	export const USER: string;
 	export const NVM_DIR: string;
 	export const GOOGLE_DEFAULT_CLIENT_ID: string;
@@ -109,10 +110,10 @@ declare module '$env/static/private' {
 	export const INFOPATH: string;
 	export const HOMEBREW_CELLAR: string;
 	export const CONDA_CHANGEPS1: string;
+	export const TAURI_DEBUG: string;
 	export const npm_package_scripts_check: string;
 	export const COLORTERM: string;
 	export const npm_node_execpath: string;
-	export const NODE_ENV: string;
 }
 
 /**
@@ -168,6 +169,7 @@ declare module '$env/dynamic/private' {
 		npm_config_registry: string;
 		PNPM_HOME: string;
 		LC_ALL: string;
+		npm_package_devDependencies__types_quill: string;
 		USER: string;
 		NVM_DIR: string;
 		GOOGLE_DEFAULT_CLIENT_ID: string;
@@ -225,10 +227,10 @@ declare module '$env/dynamic/private' {
 		INFOPATH: string;
 		HOMEBREW_CELLAR: string;
 		CONDA_CHANGEPS1: string;
+		TAURI_DEBUG: string;
 		npm_package_scripts_check: string;
 		COLORTERM: string;
 		npm_node_execpath: string;
-		NODE_ENV: string;
 		[key: string]: string | undefined;
 	}
 }
