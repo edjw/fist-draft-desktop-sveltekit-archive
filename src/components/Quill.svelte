@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte";
   import ClearContentsButton from "./clearContentsButton.svelte";
   import CopyForWordGDocsButton from "./copyForWordGDocsButton.svelte";

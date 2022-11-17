@@ -2,11 +2,15 @@
   import { contents } from "./stores.js";
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
+  import { confirm } from "@tauri-apps/api/dialog";
 
-  const confirmClear = () => {
-    if (confirm("This will delete all your text. Are you sure?")) {
-      clearContents();
-    }
+  const confirmClear = async () => {
+    const confirmed = await confirm(
+      "This will delete all your text. Are you sure?",
+      { title: "Start again?", type: "warning" }
+    );
+    if (!confirmed) return;
+    clearContents();
   };
 
   const clearContents = () => {
