@@ -42,6 +42,8 @@ declare module '$env/static/private' {
 	export const HOMEBREW_REPOSITORY: string;
 	export const TERM_PROGRAM_VERSION: string;
 	export const npm_package_scripts_dev: string;
+	export const npm_package_dependencies_cssnano: string;
+	export const npm_package_dependencies_quill: string;
 	export const DSITE: string;
 	export const npm_package_dependencies__tauri_apps_api: string;
 	export const npm_package_private: string;
@@ -61,6 +63,7 @@ declare module '$env/static/private' {
 	export const SSH_AUTH_SOCK: string;
 	export const __CF_USER_TEXT_ENCODING: string;
 	export const WARP_IS_LOCAL_SHELL_SESSION: string;
+	export const npm_package_devDependencies_postcss: string;
 	export const npm_package_devDependencies_tslib: string;
 	export const npm_execpath: string;
 	export const WARP_USE_SSH_WRAPPER: string;
@@ -73,6 +76,7 @@ declare module '$env/static/private' {
 	export const __CFBundleIdentifier: string;
 	export const PWD: string;
 	export const DRUPAL_ROOT: string;
+	export const npm_package_devDependencies_tailwindcss: string;
 	export const npm_package_scripts_preview: string;
 	export const npm_lifecycle_event: string;
 	export const npm_package_name: string;
@@ -83,6 +87,7 @@ declare module '$env/static/private' {
 	export const npm_config_node_gyp: string;
 	export const XPC_SERVICE_NAME: string;
 	export const npm_package_version: string;
+	export const npm_package_devDependencies_autoprefixer: string;
 	export const npm_package_devDependencies_svelte_check: string;
 	export const SHLVL: string;
 	export const HOME: string;
@@ -90,6 +95,7 @@ declare module '$env/static/private' {
 	export const TAURI_PLATFORM_VERSION: string;
 	export const TAURI_FAMILY: string;
 	export const HOMEBREW_PREFIX: string;
+	export const npm_package_dependencies_svelte_local_storage_store: string;
 	export const STARSHIP_SESSION_KEY: string;
 	export const MACOSX_DEPLOYMENT_TARGET: string;
 	export const LOGNAME: string;
@@ -98,6 +104,7 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_script: string;
 	export const WWWDIR: string;
 	export const TAURI_ARCH: string;
+	export const npm_package_dependencies_turndown: string;
 	export const npm_config_user_agent: string;
 	export const INFOPATH: string;
 	export const HOMEBREW_CELLAR: string;
@@ -151,6 +158,8 @@ declare module '$env/dynamic/private' {
 		HOMEBREW_REPOSITORY: string;
 		TERM_PROGRAM_VERSION: string;
 		npm_package_scripts_dev: string;
+		npm_package_dependencies_cssnano: string;
+		npm_package_dependencies_quill: string;
 		DSITE: string;
 		npm_package_dependencies__tauri_apps_api: string;
 		npm_package_private: string;
@@ -170,6 +179,7 @@ declare module '$env/dynamic/private' {
 		SSH_AUTH_SOCK: string;
 		__CF_USER_TEXT_ENCODING: string;
 		WARP_IS_LOCAL_SHELL_SESSION: string;
+		npm_package_devDependencies_postcss: string;
 		npm_package_devDependencies_tslib: string;
 		npm_execpath: string;
 		WARP_USE_SSH_WRAPPER: string;
@@ -182,6 +192,7 @@ declare module '$env/dynamic/private' {
 		__CFBundleIdentifier: string;
 		PWD: string;
 		DRUPAL_ROOT: string;
+		npm_package_devDependencies_tailwindcss: string;
 		npm_package_scripts_preview: string;
 		npm_lifecycle_event: string;
 		npm_package_name: string;
@@ -192,6 +203,7 @@ declare module '$env/dynamic/private' {
 		npm_config_node_gyp: string;
 		XPC_SERVICE_NAME: string;
 		npm_package_version: string;
+		npm_package_devDependencies_autoprefixer: string;
 		npm_package_devDependencies_svelte_check: string;
 		SHLVL: string;
 		HOME: string;
@@ -199,6 +211,7 @@ declare module '$env/dynamic/private' {
 		TAURI_PLATFORM_VERSION: string;
 		TAURI_FAMILY: string;
 		HOMEBREW_PREFIX: string;
+		npm_package_dependencies_svelte_local_storage_store: string;
 		STARSHIP_SESSION_KEY: string;
 		MACOSX_DEPLOYMENT_TARGET: string;
 		LOGNAME: string;
@@ -207,6 +220,7 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_script: string;
 		WWWDIR: string;
 		TAURI_ARCH: string;
+		npm_package_dependencies_turndown: string;
 		npm_config_user_agent: string;
 		INFOPATH: string;
 		HOMEBREW_CELLAR: string;

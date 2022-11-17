@@ -1,12 +1,5 @@
-import{c as t,d as i,e as v,v as $}from"../../chunks/index.js";import"@tauri-apps/api/tauri";const n=t((e,s,a,o)=>{let r="",l="";return`<div><div class="row"><input id="greet-input" placeholder="Enter a name..."${i("value",r,0)}>
-    <button>Greet </button></div>
-  <p>${v(l)}</p></div>`});const d={code:".logo.vite.svelte-8riyuw:hover{filter:drop-shadow(0 0 2em #747bff)}.logo.svelte.svelte-8riyuw:hover{filter:drop-shadow(0 0 2em #ff3e00)}",map:null},c=t((e,s,a,o)=>(e.css.add(d),`<h1>Welcome to Tauri!</h1>
+import{d as g,c,b,f as h,h as v,v as $}from"../../chunks/index.js";import{w as C}from"../../chunks/index2.js";import _ from"turndown";var w={};function S(t,n,o){const r=typeof localStorage<"u"&&typeof window<"u",e=(o==null?void 0:o.serializer)||JSON;function s(a,l){!r||localStorage.setItem(a,e.stringify(l))}if(!w[t]){const a=C(n,i=>{const u=r?localStorage.getItem(t):null;if(u&&i(e.parse(u)),r){const f=m=>{m.key===t&&i(m.newValue?e.parse(m.newValue):null)};return window.addEventListener("storage",f),()=>window.removeEventListener("storage",f)}}),{subscribe:l,set:d}=a;w[t]={set(i){s(t,i),d(i)},update(i){const u=i(g(a));s(t,u),d(u)},subscribe:l}}return w[t]}const p=S("preferences",{datetime:"",html:"",contents:"",plainText:""}),B=c((t,n,o,r)=>{let e;return e=b(p,s=>s),h(),e(),'<button class="button">Start again</button>'}),x=c((t,n,o,r)=>{let e;return e=b(p,s=>s),e(),'<button class="button" id="copyForWordButton">Copy for Word / Google Docs</button>'}),y=c((t,n,o,r)=>{let e;return e=b(p,s=>s),new _({headingStyle:"atx"}),e(),'<button class="button" id="copyAsMarkdownButton">Copy as Markdown</button>'}),A=c((t,n,o,r)=>{let e;e=b(p,d=>d);let s,{strikethroughAllowed:a=!1}=n,{theme:l="snow"}=n;return n.strikethroughAllowed===void 0&&o.strikethroughAllowed&&a!==void 0&&o.strikethroughAllowed(a),n.theme===void 0&&o.theme&&l!==void 0&&o.theme(l),e(),`<div class="editor-wrapper"><div${v("this",s,0)}></div></div>
 
-<div class="row"><a href="https://vitejs.dev" target="_blank"><img src="/vite.svg" class="logo vite svelte-8riyuw" alt="Vite Logo"></a>
-  <a href="https://tauri.app" target="_blank"><img src="/tauri.svg" class="logo tauri" alt="Tauri Logo"></a>
-  <a href="https://kit.svelte.dev" target="_blank"><img src="/svelte.svg" class="logo svelte svelte-8riyuw" alt="Svelte Logo"></a></div>
-
-<p>Click on the Tauri, Vite, and Svelte logos to learn more.</p>
-
-<div class="row">${$(n,"Greet").$$render(e,{},{},{})}
-</div>`));export{c as default};
+<section class="flex flex-col items-start gap-6 ml-2 mt-10">${$(B,"ClearContentsButton").$$render(t,{},{},{})}
+  ${$(x,"CopyForWordGDocsButton").$$render(t,{},{},{})}
+  ${$(y,"CopyAsMarkdownButton").$$render(t,{},{},{})}</section>`}),k=c((t,n,o,r)=>`<main class="mx-8 mt-4 max-w-[70ch]">${$(A,"Quill").$$render(t,{},{},{})}</main>`);export{k as default};

@@ -1,8 +1,8 @@
 [package]
 name = "first-draft"
 version = "0.0.1"
-description = "A Tauri App"
-authors = ["you"]
+description = "A text editor without deleting"
+authors = ["Ed Johnson-Williams"]
 license = ""
 repository = ""
 edition = "2021"
