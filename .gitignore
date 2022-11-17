@@ -31,3 +31,6 @@ dist-ssr
 !.env.example
 .svelte-kit/output
 .svelte-kit/generated
+.svelte-kit/build
+.svelte-kit/ambient.d.ts
+ambient.d.ts
