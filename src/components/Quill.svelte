@@ -24,19 +24,9 @@
   let editor;
   let quill: Quill;
 
-  export let strikethroughAllowed = false;
-
-  let strikethrough;
-
-  if (strikethroughAllowed) {
-    strikethrough = "strike";
-  } else if (!strikethroughAllowed) {
-    strikethrough = undefined;
-  }
-
   let toolbarOptions = [
     [{ header: 1 }, { header: 2 }],
-    ["bold", "italic", "underline", strikethrough, "link"],
+    ["bold", "italic", "underline", "link"],
     [{ list: "ordered" }, { list: "bullet" }],
 
     ["clean"],
@@ -67,21 +57,20 @@
 
     quill.root.setAttribute("spellcheck", false);
 
-
     // Maybe can remove this?
     if ($contents.contents !== undefined) {
-      console.log('reloading contents')
+      console.log("reloading contents");
       quill.setContents($contents.contents);
     }
 
     quill.focus();
 
-    const container = editor.querySelector("div.ql-editor");
-
     quill.on("text-change", function () {
       updateStore(container);
-      console.log(typeof $contents.contents)
+      console.log(typeof $contents.contents);
     });
+
+    const container = editor.querySelector("div.ql-editor");
 
     quill.on("selection-change", function (range) {
       if (range && range.length > 0) {
@@ -103,8 +92,4 @@
   <div bind:this={editor} on:text-change={updateStore} on:cut={handleCut} />
 </div>
 
-
-
 <!-- <div>{JSON.stringify($contents.contents)}</div> -->
-
-
