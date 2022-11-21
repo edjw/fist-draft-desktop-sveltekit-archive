@@ -1,12 +1,28 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import ClearContentsButton from "./clearContentsButton.svelte";
-  import CopyForWordGDocsButton from "./copyForWordGDocsButton.svelte";
-  import CopyAsMarkdownButton from "./copyAsMarkdownButton.svelte";
 
   import { contents } from "./stores";
 
+  import { keyBindings } from "./quillKeyBindings";
+
+  import {
+    handleCut,
+    preventTypingWhileSelected,
+  } from "../lib/editingFunctions";
+
+  import type Quill from "quill";
+
+  const updateStore = (container: HTMLDivElement) => {
+    $contents = {
+      datetime: String(new Date().getTime()),
+      html: container.innerHTML.replace(new RegExp(`<p><br></p>`, "g"), ""),
+      contents: quill.getContents(),
+      plainText: quill.getText(),
+    };
+  };
+
   let editor;
+  let quill: Quill;
 
   export let strikethroughAllowed = false;
 
@@ -35,98 +51,7 @@
   onMount(async () => {
     const { default: Quill } = await import("quill");
 
-    const keyBindings = {
-      handleDelete: {
-        key: "Delete",
-        handler: function () {},
-      },
-      handleShiftDelete: {
-        key: "Delete",
-        shiftKey: true,
-        handler: function () {},
-      },
-      handleBackspace: {
-        key: "Backspace",
-        handler: function () {},
-      },
-      handlesShiftBackspace: {
-        key: "Backspace",
-        shiftKey: true,
-        handler: function () {},
-      },
-      handlesSuperBackspace: {
-        key: "Backspace",
-        shortKey: true,
-        handler: function () {},
-      },
-      handleUndo: {
-        key: "Z",
-        shortKey: true,
-        handler: function () {},
-      },
-      tab: {
-        key: 9,
-        handler: function (range) {
-          if (range.length === 0) {
-            return true;
-          } else if (range.length > 0) {
-            return false;
-          }
-        },
-      },
-      enter: {
-        key: "Enter",
-        handler: function (range) {
-          if (range.length === 0) {
-            return true;
-          } else if (range.length > 0) {
-            return false;
-          }
-        },
-      },
-      arrowLeft: {
-        key: 37,
-        handler: function (range) {
-          if (range.length === 0) {
-            return true;
-          } else if (range.length > 0) {
-            quill.setSelection(range.index, 0);
-          }
-        },
-      },
-      arrowUp: {
-        key: 38,
-        handler: function (range) {
-          if (range.length === 0) {
-            return true;
-          } else if (range.length > 0) {
-            quill.setSelection(range.index, 0);
-          }
-        },
-      },
-      arrowRight: {
-        key: 39,
-        handler: function (range) {
-          if (range.length === 0) {
-            return true;
-          } else if (range.length > 0) {
-            quill.setSelection(range.index + range.length, 0);
-          }
-        },
-      },
-      arrowDown: {
-        key: 40,
-        handler: function (range) {
-          if (range.length === 0) {
-            return true;
-          } else if (range.length > 0) {
-            quill.setSelection(range.index + range.length, 0);
-          }
-        },
-      },
-    };
-
-    let quill = new Quill(editor, {
+    quill = new Quill(editor, {
       modules: {
         toolbar: toolbarOptions,
         keyboard: {
@@ -142,74 +67,44 @@
 
     quill.root.setAttribute("spellcheck", false);
 
-    quill.setContents($contents.contents);
+
+    // Maybe can remove this?
+    if ($contents.contents !== undefined) {
+      console.log('reloading contents')
+      quill.setContents($contents.contents);
+    }
+
     quill.focus();
 
-    const container = editor.querySelector(".ql-editor");
+    const container = editor.querySelector("div.ql-editor");
 
     quill.on("text-change", function () {
-      editor.dispatchEvent(
-        new CustomEvent("text-change", {
-          detail: {
-            html: container.innerHTML,
-            contents: quill.getContents(),
-            plainText: quill.getText(),
-          },
-        })
-      );
+      updateStore(container);
+      console.log(typeof $contents.contents)
     });
 
     quill.on("selection-change", function (range) {
       if (range && range.length > 0) {
         container.addEventListener("keydown", preventTypingWhileSelected);
-      } else if (!range) {
+      }
+      if (!range) {
         container.removeEventListener("keydown", preventTypingWhileSelected);
-      } else if (range && range.length == 0) {
+      }
+      if (range && range.length == 0) {
         container.removeEventListener("keydown", preventTypingWhileSelected);
       }
     });
 
     // End of on mount
   });
-
-  const preventTypingWhileSelected = (event) => {
-    const allowedKeys = ["ArrowUp", "ArrowRight", "ArrowDown", "ArrowLeft"];
-    const ctrlAllowedKeys = ["c", "r", "e", "l"];
-    if (allowedKeys.includes(event.key)) {
-      return true;
-    } else if (event.ctrlKey && ctrlAllowedKeys.includes(event.key)) {
-      return true;
-    } else {
-      event.preventDefault();
-    }
-  };
-
-  const allowTyping = () => {
-    document
-      .querySelector("div.ql-editor")
-      .removeEventListener("keydown", preventTypingWhileSelected);
-  };
-
-  const handleCut = (event) => {
-    event.preventDefault();
-  };
-
-  const updateStore = (event) => {
-    $contents = {
-      datetime: String(new Date().getTime()),
-      html: event.detail.html.replace(new RegExp(`<p><br></p>`, "g"), ""),
-      contents: event.detail.contents,
-      plainText: event.detail.plainText,
-    };
-  };
 </script>
 
 <div class="editor-wrapper">
   <div bind:this={editor} on:text-change={updateStore} on:cut={handleCut} />
 </div>
 
-<section class="flex flex-col items-start gap-6 ml-2 mt-10">
-  <ClearContentsButton on:allowTyping={allowTyping} />
-  <CopyForWordGDocsButton />
-  <CopyAsMarkdownButton />
-</section>
+
+
+<!-- <div>{JSON.stringify($contents.contents)}</div> -->
+
+

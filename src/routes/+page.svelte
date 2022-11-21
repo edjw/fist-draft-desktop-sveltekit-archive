@@ -1,7 +1,16 @@
 <script lang="ts">
   import Quill from "../components/Quill.svelte";
+  import ClearContentsButton from "../components/clearContentsButton.svelte";
+  import CopyForWordGDocsButton from "../components/copyForWordGDocsButton.svelte";
+  import CopyAsMarkdownButton from "../components/copyAsMarkdownButton.svelte";
+
+  import { allowTyping } from "../lib/editingFunctions";
 </script>
 
-<main class="mx-8 mt-4 max-w-[70ch]">
-  <Quill />
-</main>
+<Quill />
+
+<section class="flex flex-col items-start gap-6 mt-10 ml-2">
+  <ClearContentsButton on:allowTyping={allowTyping} />
+  <CopyForWordGDocsButton />
+  <CopyAsMarkdownButton />
+</section>

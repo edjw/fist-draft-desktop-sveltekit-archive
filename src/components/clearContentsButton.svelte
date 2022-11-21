@@ -1,5 +1,6 @@
 <script>
-  import { contents } from "./stores.js";
+  import { contents } from "./stores";
+
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
   import { confirm } from "@tauri-apps/api/dialog";
@@ -15,7 +16,7 @@
 
   const clearContents = () => {
     $contents.html = "";
-    $contents.contents = "";
+    $contents.contents = {"ops":[]};
     $contents.plainText = "";
     document.querySelector(".ql-editor").innerHTML = "";
     document.querySelector("button#copyForWordButton").textContent =

@@ -44,7 +44,7 @@
   height: 100%;
   outline: 0;
   overflow-y: auto;
-  padding: 12px 15px;
+  /* padding: 12px 15px; */
   tab-size: 4;
   -moz-tab-size: 4;
   text-align: left;
@@ -507,8 +507,9 @@
   font-style: italic;
   /* left: 15px; */
   pointer-events: none;
-  position: absolute;
+  /* position: absolute; */
   /* right: 15px; */
+  /* top: 0; */
 }
 
 .ql-snow .ql-toolbar:after,
@@ -1189,16 +1190,25 @@
 
 
 /* My custom styles */
-div.ql-toolbar.ql-snow {
-  @apply font-sans border py-4 px-6 rounded-md shadow-md;
+
+.grid-rows-auto-1-auto {
+  grid-template-rows: auto 1fr auto;
 }
 
-div.ql-container.ql-snow {
+.grid-cols-full {
+    grid-template-columns: 100%;
+}
+
+div.ql-toolbar {
+  @apply font-sans border py-4 px-6 rounded-md shadow-md sticky top-0 bg-white z-50;
+}
+
+div.ql-container {
   @apply font-sans text-base border py-4 px-6 rounded-md shadow-md mt-8 min-h-[300px];
 }
 
 div.ql-editor {
-  @apply pt-0 min-h-[300px];
+  @apply p-0 min-h-[300px];
 }
 
 .ql-editor .ql-font-serif {
@@ -1233,7 +1243,8 @@ div.ql-editor ul {
 }
 
 .ql-editor.ql-blank::before {
-  @apply top-8;
+  /* @apply top-8; */
+  @apply mt-4 absolute;
 }
 
 .button {
