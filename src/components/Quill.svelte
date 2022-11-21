@@ -1,7 +1,11 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  const dispatch = createEventDispatcher();
+  import { createEventDispatcher } from "svelte";
 
   import { contents } from "./stores";
+
+  import { confirmClear } from "../lib/confirmClear";
 
   import { keyBindings } from "./quillKeyBindings";
 
@@ -46,16 +50,15 @@
     quill.root.setAttribute("spellcheck", false);
 
     // Maybe can remove this?
-    if ($contents.contents !== undefined) {
+    if (contents.contents !== undefined) {
       console.log("reloading contents");
-      quill.setContents($contents.contents);
+      quill.setContents(contents.contents);
     }
 
     quill.focus();
 
     quill.on("text-change", function () {
       updateStore(container);
-      console.log(typeof $contents.contents);
     });
 
     const container = editor.querySelector("div.ql-editor");
@@ -76,32 +79,23 @@
   });
 </script>
 
-<!--
-  let toolbarOptions = [
-    [{ header: 1 }, { header: 2 }],
-    ["bold", "italic", "underline", "link"],
-    [{ list: "ordered" }, { list: "bullet" }],
-
-    ["clean"],
-  ]; -->
-
-<div id="toolbar-container" class="flex gap-8">
-  <span class="flex gap-2 ml-2">
+<div id="toolbar-container">
+  <span>
     <button class="ql-header" value="1" title="Header 1" />
     <button class="ql-header" value="2" title="Header 2" />
   </span>
 
-  <span class="flex gap-2">
-    <button class="ql-bold" title="Bold" />
+  <span>
+    <button type="button" class="ql-bold" title="Bold" />
 
-    <button class="ql-italic" title="Italic" />
+    <button type="button" class="ql-italic" title="Italic" />
 
-    <button class="ql-underline" title="Underline" />
+    <button type="button" class="ql-underline" title="Underline" />
 
-    <button class="ql-link" title="Link" />
+    <button type="button" class="ql-link" title="Link" />
   </span>
 
-  <span class="flex gap-2">
+  <span>
     <button
       type="button"
       class="ql-list"
@@ -119,6 +113,17 @@
 
   <span>
     <button type="button" class="ql-clean" title="Remove styles" />
+  </span>
+
+  <span class="ml-auto">
+    <button
+      type="button"
+      id="resetText"
+      class="text-sm hover:outline-none"
+      on:click={confirmClear}
+    >
+      <span class="px-4 border-2 hover:outline-none">Reset text</span>
+    </button>
   </span>
 </div>
 

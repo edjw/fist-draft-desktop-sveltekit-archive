@@ -521,25 +521,13 @@
 
 .ql-snow .ql-toolbar button,
 .ql-snow.ql-toolbar button {
-  background: 0 0;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  float: left;
   height: 24px;
-  padding: 3px 5px;
-  width: 28px;
 }
 
 .ql-snow .ql-toolbar button svg,
 .ql-snow.ql-toolbar button svg {
   float: left;
   height: 100%;
-}
-
-.ql-snow .ql-toolbar button:active:hover,
-.ql-snow.ql-toolbar button:active:hover {
-  outline: 0;
 }
 
 .ql-snow .ql-toolbar input.ql-image[type="file"],
@@ -1182,26 +1170,25 @@
   color: #06c;
 }
 
-
 /* End of Quill styles
 
 
 /* My custom styles */
 
-.grid-rows-auto-1-auto {
-  grid-template-rows: auto 1fr auto;
-}
-
-.grid-cols-full {
-    grid-template-columns: 100%;
-}
-
 div#toolbar-container {
-  @apply font-sans border py-4 px-2 rounded-md shadow-md sticky top-0 bg-white z-50;
+  @apply font-sans border py-4 px-2 rounded-md shadow-md sticky top-0 bg-white z-50 flex gap-8  items-center overflow-x-auto;
+}
+
+div#toolbar-container > span {
+  @apply px-1 py-1 flex gap-2;
+}
+
+div#toolbar-container > span button:not(:has(span)) {
+  @apply hover:outline-gray-900 hover:outline hover:outline-2 hover:text-gray-900;
 }
 
 div.ql-container {
-  @apply font-sans text-base border py-4 px-6 rounded-md shadow-md mt-8 min-h-[300px];
+  @apply font-sans text-base border py-4 px-6 rounded-md shadow-md mt-8 min-h-[300px] bg-white;
 }
 
 div.ql-editor {
@@ -1214,15 +1201,6 @@ div.ql-editor {
 
 .ql-editor .ql-font-monospace {
   @apply font-mono;
-}
-
-doc.ql-toolbar button,
-doc.ql-toolbar button {
-  @apply p-2;
-}
-
-div.ql-toolbar span.ql-formats > button {
-  @apply m-3 min-w-[28px];
 }
 
 div.ql-editor blockquote,
@@ -1240,10 +1218,17 @@ div.ql-editor ul {
 }
 
 .ql-editor.ql-blank::before {
-  /* @apply top-8; */
-  @apply mt-4 absolute;
+  @apply absolute top-4;
 }
 
 .button {
-  @apply text-left border py-4 px-6 rounded-md shadow-md min-w-[280px];
+  @apply text-left border py-4 px-6 rounded-md shadow-md min-w-[280px] bg-white;
+}
+
+.ql-editor > p:first-child:has(> br) {
+  @apply hidden;
+}
+
+.ql-editor > p:nth-child(1) {
+  @apply mt-0;
 }
