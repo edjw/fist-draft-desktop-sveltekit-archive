@@ -24,26 +24,13 @@
   let editor;
   let quill: Quill;
 
-  let toolbarOptions = [
-    [{ header: 1 }, { header: 2 }],
-    ["bold", "italic", "underline", "link"],
-    [{ list: "ordered" }, { list: "bullet" }],
-
-    ["clean"],
-  ];
-
-  export let theme = "snow";
-
-  // Don't change this weird formatting
-  const placeholderText =
-    "Start writing…\n\nYou can't delete any text you type.\n\nBreeze through your typos. You can clean them up later.";
-
   onMount(async () => {
     const { default: Quill } = await import("quill");
 
     quill = new Quill(editor, {
       modules: {
-        toolbar: toolbarOptions,
+        // toolbar: toolbarOptions,
+        toolbar: "#toolbar-container",
         keyboard: {
           bindings: keyBindings,
         },
@@ -51,8 +38,9 @@
           matchVisual: false,
         },
       },
-      theme: theme,
-      placeholder: placeholderText,
+      theme: "snow",
+      placeholder:
+        "Start writing…\n\nYou can't delete any text you type.\n\nBreeze through your typos. You can clean them up later.",
     });
 
     quill.root.setAttribute("spellcheck", false);
@@ -87,6 +75,52 @@
     // End of on mount
   });
 </script>
+
+<!--
+  let toolbarOptions = [
+    [{ header: 1 }, { header: 2 }],
+    ["bold", "italic", "underline", "link"],
+    [{ list: "ordered" }, { list: "bullet" }],
+
+    ["clean"],
+  ]; -->
+
+<div id="toolbar-container" class="flex gap-8">
+  <span class="flex gap-2 ml-2">
+    <button class="ql-header" value="1" title="Header 1" />
+    <button class="ql-header" value="2" title="Header 2" />
+  </span>
+
+  <span class="flex gap-2">
+    <button class="ql-bold" title="Bold" />
+
+    <button class="ql-italic" title="Italic" />
+
+    <button class="ql-underline" title="Underline" />
+
+    <button class="ql-link" title="Link" />
+  </span>
+
+  <span class="flex gap-2">
+    <button
+      type="button"
+      class="ql-list"
+      value="ordered"
+      title="Numbered list"
+    />
+
+    <button
+      type="button"
+      class="ql-list"
+      value="bullet"
+      title="Bulletpoint list"
+    />
+  </span>
+
+  <span>
+    <button type="button" class="ql-clean" title="Remove styles" />
+  </span>
+</div>
 
 <div class="editor-wrapper">
   <div bind:this={editor} on:text-change={updateStore} on:cut={handleCut} />
