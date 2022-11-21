@@ -9,7 +9,7 @@
 
 <Quill />
 
-<section class="flex flex-col items-start gap-6 mt-10 ml-2">
+<section class="flex items-start gap-6 mt-10">
   <ClearContentsButton on:allowTyping={allowTyping} />
   <CopyForWordGDocsButton />
   <CopyAsMarkdownButton />
