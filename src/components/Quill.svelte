@@ -44,7 +44,7 @@
       },
       theme: "snow",
       placeholder:
-        "Start writing…\n\nYou can't delete any text you type.\n\nBreeze through your typos. You can clean them up later.",
+        "Start writing…\n\nYou can't delete, cut, or overwrite any text you type.\n\nBreeze through your typos. You can clean them up later.",
     });
 
     quill.root.setAttribute("spellcheck", false);
