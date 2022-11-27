@@ -1176,7 +1176,7 @@
 /* My custom styles */
 
 div#toolbar-container {
-  @apply font-sans border py-4 px-2 rounded-md shadow-md sticky top-0 bg-white z-50 flex gap-8  items-center overflow-x-auto;
+  @apply font-sans border pt-2 pl-2 rounded-md shadow-md sticky top-0 bg-white z-50 flex gap-8  items-center overflow-x-auto overflow-y-hidden;
 }
 
 div#toolbar-container > span {
@@ -1192,7 +1192,7 @@ div#toolbar-container > span button:not(:has(span)) {
 }
 
 div.ql-container {
-  @apply font-sans text-base border py-4 px-6 rounded-md shadow-md mt-8 min-h-[300px] bg-white;
+  @apply font-sans text-base border py-4 pl-6 rounded-md shadow-md mt-8 min-h-[300px] bg-white;
 }
 
 div.ql-editor {
@@ -1235,4 +1235,19 @@ div.ql-editor ul {
 
 .ql-editor > :nth-child(1) {
   @apply mt-0;
+}
+
+main.container {
+  @apply flex flex-col;
+}
+
+.ql-toolbar {
+  @apply flex-none;
+}
+.editor-wrapper {
+  @apply flex-grow h-[70vh];
+}
+
+#bottomButtons {
+  @apply flex-none;
 }

@@ -1,5 +1,5 @@
 [package]
-name = "first-draft"
+name = "fist-draft"
 version = "0.0.1"
 description = "A text editor without deleting"
 authors = ["Ed Johnson-Williams"]

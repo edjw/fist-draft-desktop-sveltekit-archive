@@ -1,6 +1,6 @@
 import { writable } from "svelte-local-storage-store";
 
-export const contents = writable("preferences", {
+const contents = writable("preferences", {
     datetime: "",
     html: "",
     contents: {
@@ -8,3 +8,10 @@ export const contents = writable("preferences", {
     },
     plainText: ""
 })
+
+const copiedStatus = writable("copiedStatus", {
+    word: false,
+    markdown: false,
+})
+
+export { contents, copiedStatus};

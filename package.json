@@ -1,5 +1,5 @@
 {
-  "name": "first-draft",
+  "name": "fist-draft",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -21,8 +21,9 @@
   "devDependencies": {
     "@sveltejs/adapter-static": "next",
     "@sveltejs/kit": "next",
-    "@tauri-apps/cli": "^1.2.0",
+    "@tauri-apps/cli": "^1.2.1",
     "@types/quill": "^2.0.9",
+    "@types/turndown": "^5.0.1",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.19",
     "svelte": "^3.53.1",

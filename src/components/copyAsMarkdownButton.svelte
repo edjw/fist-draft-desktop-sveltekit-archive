@@ -1,5 +1,11 @@
 <script>
-  import { contents } from "./stores";
+  import { contents, copiedStatus } from "./stores";
+
+  let buttonText = "Copy as Markdown";
+
+  if ($copiedStatus.markdown) {
+    buttonText = "Copied!";
+  }
 
   import TurndownService from "turndown";
   let turndownService = new TurndownService({ headingStyle: "atx" });
@@ -25,5 +31,7 @@
 <button
   class="button"
   id="copyAsMarkdownButton"
-  on:click={addMarkdownToClipboard}>Copy as Markdown</button
+  on:click={addMarkdownToClipboard}
 >
+  {buttonText}
+</button>

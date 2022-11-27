@@ -1,5 +1,11 @@
 <script>
-  import { contents } from "./stores";
+  import { contents, copiedStatus } from "./stores";
+
+  let buttonText = "Copy";
+
+  // if ($copiedStatus.word) {
+  //   buttonText = "Copied!";
+  // }
 
   const addTextToClipboard = async (event) => {
     const formattedText = $contents.html;
@@ -16,6 +22,7 @@
         event.target.textContent = "Copied!";
         document.querySelector("button#copyAsMarkdownButton").textContent =
           "Copy as Markdown";
+
       },
       function () {
         /* failure */
@@ -24,6 +31,6 @@
   };
 </script>
 
-<button class="button" id="copyForWordButton" on:click={addTextToClipboard}
-  >Copy for Word / Google Docs</button
->
+<button class="button" id="copyForWordButton" on:click={addTextToClipboard}>
+  {buttonText}
+</button>

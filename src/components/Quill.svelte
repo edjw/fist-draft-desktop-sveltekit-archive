@@ -25,13 +25,17 @@
     };
   };
 
+  const handleEdit = (container) => {
+    updateStore(container);
+  };
+
+  // This gets bound through Svelte to a div at the bottom of this file
   let editor;
-  let quill: Quill;
 
   onMount(async () => {
     const { default: Quill } = await import("quill");
 
-    quill = new Quill(editor, {
+    const quill = new Quill(editor, {
       modules: {
         // toolbar: toolbarOptions,
         toolbar: "#toolbar-container",
@@ -49,6 +53,8 @@
 
     quill.root.setAttribute("spellcheck", false);
 
+    const container = editor.querySelector("div.ql-editor");
+
     // Maybe can remove this?
     if (contents.contents !== undefined) {
       console.log("reloading contents");
@@ -61,8 +67,6 @@
       updateStore(container);
     });
 
-    const container = editor.querySelector("div.ql-editor");
-
     quill.on("selection-change", function (range) {
       if (range && range.length > 0) {
         container.addEventListener("keydown", preventTypingWhileSelected);
@@ -74,6 +78,14 @@
         container.removeEventListener("keydown", preventTypingWhileSelected);
       }
     });
+
+    editor.addEventListener("focus", function () {
+      console.log("focused");
+    });
+
+    // quill.on("focus", function () {
+    //   container.removeEventListener("focus");
+    // });
 
     // End of on mount
   });
@@ -128,7 +140,5 @@
 </div>
 
 <div class="editor-wrapper">
-  <div bind:this={editor} on:text-change={updateStore} on:cut={handleCut} />
+  <div bind:this={editor} on:text-change={handleEdit} on:cut={handleCut} />
 </div>
-
-<!-- <div>{JSON.stringify($contents.contents)}</div> -->
