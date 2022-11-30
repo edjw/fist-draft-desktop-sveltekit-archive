@@ -1222,7 +1222,7 @@ div.ql-editor ul {
 }
 
 
-.ql-editor > p:first-child:has(> br) {
+.ql-editor.ql-blank > p:first-child:has(> br) {
   @apply hidden;
 }
 
@@ -1250,4 +1250,8 @@ main.container {
 
 #bottomButtons {
   @apply flex-none;
+}
+
+p:empty {
+  display: none;
 }

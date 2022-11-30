@@ -1,7 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  const dispatch = createEventDispatcher();
-  import { createEventDispatcher } from "svelte";
+
 
   import { contents } from "./stores";
 
@@ -14,23 +13,8 @@
     preventTypingWhileSelected,
   } from "../lib/editingFunctions";
 
-  import type Quill from "quill";
-
-  const updateStore = (container: HTMLDivElement) => {
-    $contents = {
-      datetime: String(new Date().getTime()),
-      html: container.innerHTML.replace(new RegExp(`<p><br></p>`, "g"), ""),
-      contents: quill.getContents(),
-      plainText: quill.getText(),
-    };
-  };
-
-  const handleEdit = (container) => {
-    updateStore(container);
-  };
-
   // This gets bound through Svelte to a div at the bottom of this file
-  let editor;
+  let editor: HTMLDivElement;
 
   onMount(async () => {
     const { default: Quill } = await import("quill");
@@ -51,20 +35,32 @@
         "Start writing…\n\nYou can't delete, cut, or overwrite any text you type.\n\nBreeze through your typos. You can clean them up later.",
     });
 
-    quill.root.setAttribute("spellcheck", false);
-
     const container = editor.querySelector("div.ql-editor");
 
-    // Maybe can remove this?
-    if (contents.contents !== undefined) {
+    const updateStore = () => {
+      $contents = {
+        datetime: String(new Date().getTime()),
+        html: container.innerHTML.replace(new RegExp(`<p><br></p>`, "g"), ""),
+        contents: quill.getContents(),
+        plainText: quill.getText(),
+      };
+    };
+
+    const handleEdit = () => {
+      updateStore();
+    };
+
+    quill.root.setAttribute("spellcheck", false);
+
+    if ($contents.html !== "") {
       console.log("reloading contents");
-      quill.setContents(contents.contents);
+      quill.setContents($contents.contents);
     }
 
     quill.focus();
 
     quill.on("text-change", function () {
-      updateStore(container);
+      handleEdit(container);
     });
 
     quill.on("selection-change", function (range) {
@@ -78,14 +74,6 @@
         container.removeEventListener("keydown", preventTypingWhileSelected);
       }
     });
-
-    editor.addEventListener("focus", function () {
-      console.log("focused");
-    });
-
-    // quill.on("focus", function () {
-    //   container.removeEventListener("focus");
-    // });
 
     // End of on mount
   });
@@ -140,5 +128,5 @@
 </div>
 
 <div class="editor-wrapper">
-  <div bind:this={editor} on:text-change={handleEdit} on:cut={handleCut} />
+  <div bind:this={editor} on:cut={handleCut} />
 </div>
