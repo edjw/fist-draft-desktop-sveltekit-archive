@@ -1,13 +1,7 @@
 <script>
-  import { contents, copiedStatus } from "./stores";
+  import { contents, copyButtonText } from "./stores";
 
-  let buttonText = "Copy";
-
-  // if ($copiedStatus.word) {
-  //   buttonText = "Copied!";
-  // }
-
-  const addTextToClipboard = async (event) => {
+  const addTextToClipboard = async () => {
     const formattedText = $contents.html;
     const plainText = $contents.plainText;
     const item = [
@@ -19,10 +13,8 @@
 
     navigator.clipboard.write(item).then(
       function () {
-        event.target.textContent = "Copied!";
-        document.querySelector("button#copyAsMarkdownButton").textContent =
-          "Copy as Markdown";
-
+        $copyButtonText.wordButtonText = "Copied!";
+        $copyButtonText.markdownButtonText = "Copy as Markdown";
       },
       function () {
         /* failure */
@@ -32,5 +24,5 @@
 </script>
 
 <button class="button" id="copyForWordButton" on:click={addTextToClipboard}>
-  {buttonText}
+  {$copyButtonText.wordButtonText}
 </button>

@@ -1,8 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-
-  import { contents } from "./stores";
+  import { contents, copyButtonText } from "./stores";
 
   import { confirmClear } from "../lib/confirmClear";
 
@@ -11,6 +10,7 @@
   import {
     handleCut,
     preventTypingWhileSelected,
+    allowTyping,
   } from "../lib/editingFunctions";
 
   // This gets bound through Svelte to a div at the bottom of this file
@@ -40,13 +40,21 @@
     const updateStore = () => {
       $contents = {
         datetime: String(new Date().getTime()),
-        html: container.innerHTML.replace(new RegExp(`<p><br></p>`, "g"), ""),
+        html: container?.innerHTML.replace(new RegExp(`<p><br></p>`, "g"), ""),
         contents: quill.getContents(),
         plainText: quill.getText(),
       };
     };
 
     const handleEdit = () => {
+      if ($copyButtonText.markdownButtonText === "Copied!") {
+        $copyButtonText.markdownButtonText = "Copy as Markdown";
+      }
+
+      if ($copyButtonText.wordButtonText === "Copied!") {
+        $copyButtonText.wordButtonText = "Copy";
+      }
+
       updateStore();
     };
 
@@ -60,7 +68,7 @@
     quill.focus();
 
     quill.on("text-change", function () {
-      handleEdit(container);
+      handleEdit();
     });
 
     quill.on("selection-change", function (range) {
@@ -78,6 +86,8 @@
     // End of on mount
   });
 </script>
+
+<pre style="color: white">{JSON.stringify($copyButtonText, null, 2)}</pre>
 
 <div id="toolbar-container">
   <span>
@@ -121,8 +131,9 @@
       id="resetText"
       class="text-sm hover:outline-none"
       on:click={confirmClear}
+      on:allowTyping={allowTyping}
     >
-      <span class="px-4 border-2 hover:outline-none">Reset text</span>
+      <span class="px-4 border-2 hover:outline-none">Start again</span>
     </button>
   </span>
 </div>

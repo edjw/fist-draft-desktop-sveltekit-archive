@@ -1,17 +1,18 @@
-import { writable } from "svelte-local-storage-store";
+import { writable as writableLocalStorage } from "svelte-local-storage-store";
+import { writable } from 'svelte/store';
 
-const contents = writable("preferences", {
+const contents = writableLocalStorage("preferences", {
     datetime: "",
     html: "",
     contents: {
         "ops": []
     },
     plainText: ""
-})
+});
 
-const copiedStatus = writable("copiedStatus", {
-    word: false,
-    markdown: false,
-})
+const copyButtonText = writable({
+    wordButtonText: "Copy",
+    markdownButtonText: "Copy as Markdown",
+});
 
-export { contents, copiedStatus};
+export { contents, copyButtonText };

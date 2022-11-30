@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { contents } from "../components/stores";
-
   import Quill from "../components/Quill.svelte";
   import ClearContentsButton from "../components/clearContentsButton.svelte";
   import CopyForWordGDocsButton from "../components/copyForWordGDocsButton.svelte";
@@ -11,7 +9,7 @@
 
 <Quill />
 
-<section class="flex items-start gap-6 mt-10" id="bottomButtons">
+<section class="flex flex-col sm:flex-row items-start gap-6 mt-16">
   <ClearContentsButton on:allowTyping={allowTyping} />
   <CopyForWordGDocsButton />
   <CopyAsMarkdownButton />

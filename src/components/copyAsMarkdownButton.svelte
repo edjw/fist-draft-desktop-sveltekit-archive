@@ -1,16 +1,10 @@
 <script>
-  import { contents, copiedStatus } from "./stores";
-
-  let buttonText = "Copy as Markdown";
-
-  if ($copiedStatus.markdown) {
-    buttonText = "Copied!";
-  }
+  import { contents, copyButtonText } from "./stores";
 
   import TurndownService from "turndown";
   let turndownService = new TurndownService({ headingStyle: "atx" });
 
-  const addMarkdownToClipboard = async (event) => {
+  const addMarkdownToClipboard = async () => {
     if (!navigator.clipboard) {
       return;
     }
@@ -19,9 +13,11 @@
       const html = $contents.html;
       const markdown = turndownService.turndown(html);
       await navigator.clipboard.writeText(markdown);
-      event.target.textContent = "Copied!";
-      document.querySelector("button#copyForWordButton").textContent =
-        "Copy for Word / Google Docs";
+
+      $copyButtonText.markdownButtonText = "Copied!";
+
+      $copyButtonText.wordButtonText = "Copy"
+
     } catch (error) {
       console.error("Copy failed", error);
     }
@@ -33,5 +29,5 @@
   id="copyAsMarkdownButton"
   on:click={addMarkdownToClipboard}
 >
-  {buttonText}
+  {$copyButtonText.markdownButtonText}
 </button>
