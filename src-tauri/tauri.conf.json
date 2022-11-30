@@ -8,11 +8,14 @@
   },
   "package": {
     "productName": "Fist Draft",
-    "version": "0.0.0"
+    "version": "0.1.0"
   },
   "tauri": {
     "allowlist": {
-      "all": true
+      "all": false,
+      "dialog": {
+        "confirm": true
+      }
     },
     "bundle": {
       "active": true,
@@ -57,10 +60,11 @@
       {
         "title": "Fist Draft",
         "fullscreen": false,
-        "height": 800,
-        "width": 600,
+        "height": 1000,
+        "width": 800,
         "resizable": true,
-        "minWidth": 580
+        "minWidth": 580,
+        "focus": true
       }
     ]
   }
