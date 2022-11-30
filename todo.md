@@ -1,10 +1,12 @@
-logo
+Bug! First character is going after the cursor on first type
 
-After any text edit, reset  the copied! text on buttons after copying. So you can make a change and then copy through same button again
+Feature: After any text edit, reset  the copied! text on buttons after copying. So you can make a change and then copy through same button again
 
+Feature: Add text to the About section
 
-Some kind of About this tool button somewhere
+Feature: maybe add option of exporting to html
 
-Rebuild with https://github.com/basecamp/trix
+Release it!!!
 
-maybe add option of exporting to html
+Experiment: Rebuild with https://github.com/basecamp/trix
+
