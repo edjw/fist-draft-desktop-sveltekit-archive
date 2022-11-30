@@ -87,8 +87,6 @@
   });
 </script>
 
-<pre style="color: white">{JSON.stringify($copyButtonText, null, 2)}</pre>
-
 <div id="toolbar-container">
   <span>
     <button class="ql-header" value="1" title="Header 1" />
@@ -129,7 +127,7 @@
     <button
       type="button"
       id="resetText"
-      class="text-sm hover:outline-none"
+      class="text-sm hover:outline-none min-w-max"
       on:click={confirmClear}
       on:allowTyping={allowTyping}
     >
