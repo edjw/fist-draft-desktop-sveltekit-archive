@@ -29,11 +29,13 @@ declare module '$env/static/private' {
 	export const MANPATH: string;
 	export const STARSHIP_SHELL: string;
 	export const _VOLTA_TOOL_RECURSION: string;
+	export const npm_package_devDependencies_prettier: string;
 	export const TAURI_TARGET_TRIPLE: string;
 	export const TERM_PROGRAM: string;
 	export const npm_package_scripts_tauri: string;
 	export const NODE: string;
 	export const INIT_CWD: string;
+	export const npm_package_devDependencies_prettier_plugin_svelte: string;
 	export const npm_package_devDependencies_typescript: string;
 	export const PROJDIR: string;
 	export const SHELL: string;
@@ -41,7 +43,9 @@ declare module '$env/static/private' {
 	export const npm_package_devDependencies_vite: string;
 	export const HOMEBREW_REPOSITORY: string;
 	export const TMPDIR: string;
+	export const npm_package_scripts_lint: string;
 	export const TERM_PROGRAM_VERSION: string;
+	export const npm_package_devDependencies_eslint_plugin_svelte3: string;
 	export const npm_package_scripts_dev: string;
 	export const FIG_NEW_SESSION: string;
 	export const MallocNanoZone: string;
@@ -67,6 +71,7 @@ declare module '$env/static/private' {
 	export const npm_package_devDependencies__sveltejs_adapter_static: string;
 	export const SSH_AUTH_SOCK: string;
 	export const __CF_USER_TEXT_ENCODING: string;
+	export const npm_package_devDependencies_eslint: string;
 	export const npm_package_devDependencies_postcss: string;
 	export const npm_package_devDependencies_tslib: string;
 	export const npm_execpath: string;
@@ -90,6 +95,7 @@ declare module '$env/static/private' {
 	export const VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
 	export const XPC_FLAGS: string;
 	export const TAURI_PLATFORM: string;
+	export const npm_package_devDependencies_eslint_config_prettier: string;
 	export const npm_config_node_gyp: string;
 	export const XPC_SERVICE_NAME: string;
 	export const npm_package_version: string;
@@ -107,6 +113,7 @@ declare module '$env/static/private' {
 	export const LOGNAME: string;
 	export const MACOSX_DEPLOYMENT_TARGET: string;
 	export const STARSHIP_SESSION_KEY: string;
+	export const npm_package_scripts_format: string;
 	export const DTREE: string;
 	export const npm_package_devDependencies__tauri_apps_cli: string;
 	export const npm_lifecycle_script: string;
@@ -155,11 +162,13 @@ declare module '$env/dynamic/private' {
 		MANPATH: string;
 		STARSHIP_SHELL: string;
 		_VOLTA_TOOL_RECURSION: string;
+		npm_package_devDependencies_prettier: string;
 		TAURI_TARGET_TRIPLE: string;
 		TERM_PROGRAM: string;
 		npm_package_scripts_tauri: string;
 		NODE: string;
 		INIT_CWD: string;
+		npm_package_devDependencies_prettier_plugin_svelte: string;
 		npm_package_devDependencies_typescript: string;
 		PROJDIR: string;
 		SHELL: string;
@@ -167,7 +176,9 @@ declare module '$env/dynamic/private' {
 		npm_package_devDependencies_vite: string;
 		HOMEBREW_REPOSITORY: string;
 		TMPDIR: string;
+		npm_package_scripts_lint: string;
 		TERM_PROGRAM_VERSION: string;
+		npm_package_devDependencies_eslint_plugin_svelte3: string;
 		npm_package_scripts_dev: string;
 		FIG_NEW_SESSION: string;
 		MallocNanoZone: string;
@@ -193,6 +204,7 @@ declare module '$env/dynamic/private' {
 		npm_package_devDependencies__sveltejs_adapter_static: string;
 		SSH_AUTH_SOCK: string;
 		__CF_USER_TEXT_ENCODING: string;
+		npm_package_devDependencies_eslint: string;
 		npm_package_devDependencies_postcss: string;
 		npm_package_devDependencies_tslib: string;
 		npm_execpath: string;
@@ -216,6 +228,7 @@ declare module '$env/dynamic/private' {
 		VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
 		XPC_FLAGS: string;
 		TAURI_PLATFORM: string;
+		npm_package_devDependencies_eslint_config_prettier: string;
 		npm_config_node_gyp: string;
 		XPC_SERVICE_NAME: string;
 		npm_package_version: string;
@@ -233,6 +246,7 @@ declare module '$env/dynamic/private' {
 		LOGNAME: string;
 		MACOSX_DEPLOYMENT_TARGET: string;
 		STARSHIP_SESSION_KEY: string;
+		npm_package_scripts_format: string;
 		DTREE: string;
 		npm_package_devDependencies__tauri_apps_cli: string;
 		npm_lifecycle_script: string;

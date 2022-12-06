@@ -1,10 +1,6 @@
 import { contents, copyButtonText } from "../components/stores";
 import { confirm } from "@tauri-apps/api/dialog";
 
-import { createEventDispatcher } from "svelte";
-
-const dispatch = createEventDispatcher();
-
 const clearContents = () => {
   contents.html = "";
   contents.contents = {};
@@ -18,7 +14,7 @@ const clearContents = () => {
     markdownButtonText: "Copy as Markdown",
   });
 
-  dispatch("allowTyping");
+  // dispatch("allowTyping");
 };
 
 export const confirmClear = async () => {

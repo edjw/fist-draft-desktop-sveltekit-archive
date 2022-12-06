@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { confirmClear } from "../lib/confirmClear";
 </script>
 

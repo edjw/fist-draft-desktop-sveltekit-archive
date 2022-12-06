@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { contents, copyButtonText } from "./stores";
 
   import TurndownService from "turndown";
