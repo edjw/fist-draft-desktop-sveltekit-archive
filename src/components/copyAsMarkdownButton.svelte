@@ -16,8 +16,7 @@
 
       $copyButtonText.markdownButtonText = "Copied!";
 
-      $copyButtonText.wordButtonText = "Copy"
-
+      $copyButtonText.wordButtonText = "Copy";
     } catch (error) {
       console.error("Copy failed", error);
     }
