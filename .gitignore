@@ -34,3 +34,4 @@ dist-ssr
 .svelte-kit/build
 .svelte-kit/ambient.d.ts
 ambient.d.ts
+.svelte-kit/ambient.d.ts
