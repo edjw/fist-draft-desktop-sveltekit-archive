@@ -1,31 +1,43 @@
 export const keyBindings = {
   handleDelete: {
     key: "Delete",
-    handler: function () { return false; },
+    handler: function () {
+      return false;
+    },
   },
   handleShiftDelete: {
     key: "Delete",
     shiftKey: true,
-    handler: function () { return false; },
+    handler: function () {
+      return false;
+    },
   },
   handleBackspace: {
     key: "Backspace",
-    handler: function () { return false; },
+    handler: function () {
+      return false;
+    },
   },
   handlesShiftBackspace: {
     key: "Backspace",
     shiftKey: true,
-    handler: function () { return false; },
+    handler: function () {
+      return false;
+    },
   },
   handlesSuperBackspace: {
     key: "Backspace",
     shortKey: true,
-    handler: function () { return false; },
+    handler: function () {
+      return false;
+    },
   },
   handleUndo: {
     key: "Z",
     shortKey: true,
-    handler: function () { return false; },
+    handler: function () {
+      return false;
+    },
   },
   tab: {
     key: 9,
