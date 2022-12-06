@@ -38,12 +38,14 @@
     const updateStore = () => {
       const container = editor.querySelector("div.ql-editor");
 
+      const liveHTML = container?.innerHTML
+        .replace(new RegExp(`<p><br></p>`, "g"), "")
+        .replace(new RegExp(` style="[^\"]*"`, "g"), "")
+        .replace(new RegExp(`<span>|</span>`, "g"), "");
+
       $contents = {
         datetime: String(new Date().getTime()),
-        html: container?.innerHTML
-          .replace(new RegExp(`<p><br></p>`, "g"), "")
-          .replace(new RegExp(` style="[^\"]*"`, "g"), "")
-          .replace(new RegExp(`<span>|</span>`, "g"), ""),
+        html: liveHTML || "",
         contents: quill.getContents(),
         plainText: quill.getText(),
       };
@@ -78,6 +80,7 @@
     const container = editor.querySelector("div.ql-editor");
 
     quill.on("selection-change", function (range) {
+      if (!container) return;
       if (range && range.length > 0) {
         container.addEventListener("keydown", preventEditingWhileSelected);
       }
@@ -90,13 +93,14 @@
     });
 
     // Disable context menu on the editor
-    document
-      .querySelector("div.ql-editor")
-      .addEventListener("contextmenu", (event) => event.preventDefault());
+    if (!container) return;
+    container.addEventListener("contextmenu", (event) =>
+      event.preventDefault()
+    );
   }); // End of on mount
 </script>
 
-<pre style="color: white">{$contents.html}</pre>
+<!-- <pre style="color: white">{$contents.html}</pre> -->
 
 <div id="toolbar-container">
   <span>
@@ -140,7 +144,6 @@
       id="resetText"
       class="text-sm hover:outline-none min-w-max"
       on:click={confirmClear}
-      on:allowTyping={allowTyping}
     >
       <span class="px-4 border-2 hover:outline-none">Start again</span>
     </button>
