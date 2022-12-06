@@ -9,9 +9,8 @@
 
   import {
     handleCut,
-    preventTypingWhileSelected,
+    preventEditingWhileSelected,
     allowTyping,
-    preventPastingWhileSelected,
   } from "../lib/editingFunctions";
 
   // This gets bound through Svelte to a div at the bottom of this file
@@ -35,11 +34,6 @@
       placeholder:
         "Start writing…\n\nYou can't delete, cut, or overwrite any text you type.\n\nBreeze through your typos. You can clean them up later.",
     });
-
-    // Disable context menu on the editor
-    document
-      .querySelector("div.ql-editor")
-      .addEventListener("contextmenu", (event) => event.preventDefault());
 
     const updateStore = () => {
       const container = editor.querySelector("div.ql-editor");
@@ -85,21 +79,21 @@
 
     quill.on("selection-change", function (range) {
       if (range && range.length > 0) {
-        container.addEventListener("keydown", preventTypingWhileSelected);
-        document.addEventListener("paste", preventPastingWhileSelected);
+        container.addEventListener("keydown", preventEditingWhileSelected);
       }
       if (!range) {
-        container.removeEventListener("keydown", preventTypingWhileSelected);
-        document.removeEventListener("paste", preventPastingWhileSelected);
+        container.removeEventListener("keydown", preventEditingWhileSelected);
       }
       if (range && range.length == 0) {
-        container.removeEventListener("keydown", preventTypingWhileSelected);
-        document.removeEventListener("paste", preventPastingWhileSelected);
+        container.removeEventListener("keydown", preventEditingWhileSelected);
       }
     });
 
-    // End of on mount
-  });
+    // Disable context menu on the editor
+    document
+      .querySelector("div.ql-editor")
+      .addEventListener("contextmenu", (event) => event.preventDefault());
+  }); // End of on mount
 </script>
 
 <pre style="color: white">{$contents.html}</pre>
