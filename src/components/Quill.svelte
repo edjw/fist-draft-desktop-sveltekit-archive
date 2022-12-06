@@ -11,6 +11,7 @@
     handleCut,
     preventTypingWhileSelected,
     allowTyping,
+    preventPastingWhileSelected,
   } from "../lib/editingFunctions";
 
   // This gets bound through Svelte to a div at the bottom of this file
@@ -35,18 +36,27 @@
         "Start writing…\n\nYou can't delete, cut, or overwrite any text you type.\n\nBreeze through your typos. You can clean them up later.",
     });
 
-    const container = editor.querySelector("div.ql-editor");
+    // Disable context menu on the editor
+    document
+      .querySelector("div.ql-editor")
+      .addEventListener("contextmenu", (event) => event.preventDefault());
 
     const updateStore = () => {
+      const container = editor.querySelector("div.ql-editor");
+
       $contents = {
         datetime: String(new Date().getTime()),
-        html: container?.innerHTML.replace(new RegExp(`<p><br></p>`, "g"), ""),
+        html: container?.innerHTML
+          .replace(new RegExp(`<p><br></p>`, "g"), "")
+          .replace(new RegExp(` style="[^\"]*"`, "g"), "")
+          .replace(new RegExp(`<span>|</span>`, "g"), ""),
         contents: quill.getContents(),
         plainText: quill.getText(),
       };
     };
 
     const handleEdit = () => {
+      // TODO: find a way of resetting the buttons that doesn't mean this has to be run on every edit
       if ($copyButtonText.markdownButtonText === "Copied!") {
         $copyButtonText.markdownButtonText = "Copy as Markdown";
       }
@@ -60,8 +70,8 @@
 
     quill.root.setAttribute("spellcheck", false);
 
+    // Restore content on app start
     if ($contents.html !== "") {
-      console.log("reloading contents");
       quill.setContents($contents.contents);
     }
 
@@ -71,21 +81,28 @@
       handleEdit();
     });
 
+    const container = editor.querySelector("div.ql-editor");
+
     quill.on("selection-change", function (range) {
       if (range && range.length > 0) {
         container.addEventListener("keydown", preventTypingWhileSelected);
+        document.addEventListener("paste", preventPastingWhileSelected);
       }
       if (!range) {
         container.removeEventListener("keydown", preventTypingWhileSelected);
+        document.removeEventListener("paste", preventPastingWhileSelected);
       }
       if (range && range.length == 0) {
         container.removeEventListener("keydown", preventTypingWhileSelected);
+        document.removeEventListener("paste", preventPastingWhileSelected);
       }
     });
 
     // End of on mount
   });
 </script>
+
+<pre style="color: white">{$contents.html}</pre>
 
 <div id="toolbar-container">
   <span>
@@ -135,7 +152,6 @@
     </button>
   </span>
 </div>
-
 <div class="editor-wrapper">
   <div bind:this={editor} on:cut={handleCut} />
 </div>
