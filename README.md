@@ -1,8 +1,7 @@
 # Fist Draft Desktop
 
-This template should help get you started developing with Tauri and Svelte-Kit in Vite.
-
-## Recommended IDE Setup
-
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer).
-
+## Release new version
+1. Bump the version number in src-tauri/Cargo.toml
+2. Run cargo check to update Cargo.lock
+3. Create a git tag in the format v#.#.#
+4. Add release notes to the generated GitHub release and publish it
