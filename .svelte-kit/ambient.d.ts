@@ -126,10 +126,10 @@ declare module '$env/static/private' {
 	export const HOMEBREW_CELLAR: string;
 	export const INFOPATH: string;
 	export const VSCODE_GIT_ASKPASS_NODE: string;
-	export const TAURI_DEBUG: string;
 	export const npm_package_scripts_check: string;
 	export const COLORTERM: string;
 	export const npm_node_execpath: string;
+	export const NODE_ENV: string;
 }
 
 /**
@@ -259,10 +259,10 @@ declare module '$env/dynamic/private' {
 		HOMEBREW_CELLAR: string;
 		INFOPATH: string;
 		VSCODE_GIT_ASKPASS_NODE: string;
-		TAURI_DEBUG: string;
 		npm_package_scripts_check: string;
 		COLORTERM: string;
 		npm_node_execpath: string;
+		NODE_ENV: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: string]: string | undefined;
 	}
