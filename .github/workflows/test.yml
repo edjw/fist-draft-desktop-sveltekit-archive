@@ -1,12 +1,17 @@
 name: Test
 # name: 'test-on-pr'
 # on: [pull_request]
+# on:
+#   push:
+#     branches:
+#       - "*"
+#   pull_request:
+#   workflow_dispatch:
+
 on:
   push:
-    branches:
-      - "*"
-  pull_request:
-  workflow_dispatch:
+    tags:
+      - "test-*"
 
 jobs:
   test-tauri:
