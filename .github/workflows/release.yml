@@ -45,7 +45,7 @@ jobs:
 
       # Install macos specific targets
       - name: install arm64 rust target (macos only)
-        if: matrix.platform == "macos-latest"
+        if: matrix.platform == macos-latest
         run: rustup target add aarch64-apple-darwin
 
       - name: Sync node version and setup cache
