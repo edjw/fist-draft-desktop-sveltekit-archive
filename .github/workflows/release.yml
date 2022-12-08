@@ -37,6 +37,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
+          cache: "yarn" # Set this to npm, yarn or pnpm.
+
+      - name: install app dependencies
+        run: yarn
 
       - name: install Rust stable
         uses: actions-rs/toolchain@v1
