@@ -62,7 +62,7 @@ jobs:
         run: yarn
 
       - name: Build the full app
-        uses: tauri-apps/tauri-action@v0
+        uses: tauri-apps/tauri-action@v0.3.1
         with:
           args: ${{ matrix.platform == 'macos-latest' && '--target universal-apple-darwin' || '' }}
           tagName: app-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
