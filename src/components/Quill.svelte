@@ -94,7 +94,7 @@
 
     // Disable context menu on the editor
     if (!container) return;
-    container.addEventListener("contextmenu", (event) =>
+    document.addEventListener("contextmenu", (event) =>
       event.preventDefault()
     );
   }); // End of on mount

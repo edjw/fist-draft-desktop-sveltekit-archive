@@ -117,6 +117,7 @@ declare module '$env/static/private' {
 	export const HOMEBREW_PREFIX: string;
 	export const TAURI_FAMILY: string;
 	export const TAURI_PLATFORM_VERSION: string;
+	export const grpc_cfstream: string;
 	export const npm_config_version_git_message: string;
 	export const npm_package_dependencies_svelte_local_storage_store: string;
 	export const LOGNAME: string;
@@ -140,11 +141,11 @@ declare module '$env/static/private' {
 	export const VSCODE_GIT_ASKPASS_NODE: string;
 	export const npm_config_ignore_optional: string;
 	export const npm_config_init_version: string;
+	export const TAURI_DEBUG: string;
 	export const npm_package_scripts_check: string;
 	export const COLORTERM: string;
 	export const npm_config_version_tag_prefix: string;
 	export const npm_node_execpath: string;
-	export const NODE_ENV: string;
 }
 
 /**
@@ -265,6 +266,7 @@ declare module '$env/dynamic/private' {
 		HOMEBREW_PREFIX: string;
 		TAURI_FAMILY: string;
 		TAURI_PLATFORM_VERSION: string;
+		grpc_cfstream: string;
 		npm_config_version_git_message: string;
 		npm_package_dependencies_svelte_local_storage_store: string;
 		LOGNAME: string;
@@ -288,11 +290,11 @@ declare module '$env/dynamic/private' {
 		VSCODE_GIT_ASKPASS_NODE: string;
 		npm_config_ignore_optional: string;
 		npm_config_init_version: string;
+		TAURI_DEBUG: string;
 		npm_package_scripts_check: string;
 		COLORTERM: string;
 		npm_config_version_tag_prefix: string;
 		npm_node_execpath: string;
-		NODE_ENV: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: string]: string | undefined;
 	}
