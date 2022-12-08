@@ -45,7 +45,7 @@ jobs:
 
       # Install macos specific targets
       - name: install arm64 rust target (macos only)
-        if: matrix.platform == 'macos-latest'
+        if: matrix.settings.platform == 'macos-latest'
         run: rustup target add aarch64-apple-darwin
 
       - name: Sync node version and setup cache
@@ -55,7 +55,7 @@ jobs:
           cache: 'yarn' # Set this to npm, yarn or pnpm.
 
       - name: install dependencies (ubuntu only)
-        if: matrix.platform == 'ubuntu-latest'
+        if: matrix.settings.platform == 'ubuntu-latest'
         run: |
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libappindicator3-dev librsvg2-dev patchelf
