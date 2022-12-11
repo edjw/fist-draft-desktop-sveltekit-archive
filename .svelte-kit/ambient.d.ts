@@ -117,7 +117,6 @@ declare module '$env/static/private' {
 	export const HOMEBREW_PREFIX: string;
 	export const TAURI_FAMILY: string;
 	export const TAURI_PLATFORM_VERSION: string;
-	export const grpc_cfstream: string;
 	export const npm_config_version_git_message: string;
 	export const npm_package_dependencies_svelte_local_storage_store: string;
 	export const LOGNAME: string;
@@ -266,7 +265,6 @@ declare module '$env/dynamic/private' {
 		HOMEBREW_PREFIX: string;
 		TAURI_FAMILY: string;
 		TAURI_PLATFORM_VERSION: string;
-		grpc_cfstream: string;
 		npm_config_version_git_message: string;
 		npm_package_dependencies_svelte_local_storage_store: string;
 		LOGNAME: string;

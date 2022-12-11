@@ -1,10 +1,15 @@
-Make the release and test yml files right with the best triggers
+Make the release and test yml files right with the best triggers. When should you run tests? When should you release?
 
-Feature: Link Learn more to a webpage about the tool. Or turn that off?
+Feature: make a really simple website about fist draft. I bought fistdraft.com
 
-Feature: maybe add option of exporting to html
+Feature: Link Learn more to a webpage about the tool.
+
+Release it!!! At least to a few people first
+
+Test on windows and ubuntu
+
+How get onto the mac app store?
+
+How to get onto the windows store?
 
 
-Release it!!!
-
-Experiment: Rebuild with https://github.com/basecamp/trix
